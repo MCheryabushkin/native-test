@@ -1,0 +1,13 @@
+pre-commit:
+  commands:
+    eslint:
+      glob: '*.{js,jsx,ts,tsx}'
+      exclude: '^{codegen.config.ts|*.graphql|./src/gqlClient/@generated/graphql.tsx}$'
+      run: yarn prettier --write {staged_files} && eslint --fix {staged_files} && git add {staged_files}
+#    stylelint:
+#      glob: '*.{css}'
+#      run: yarn prettier --write {staged_files} && stylelint --fix {staged_files} && git add {staged_files}
+    lint:
+      glob: '*.{json,md,html}'
+      exclude: 'package.json'
+      run: yarn prettier --write {staged_files} && git add {staged_files}
